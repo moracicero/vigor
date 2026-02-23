@@ -1,0 +1,18 @@
+# --- Java / Maven ---
+backend/target/
+backend/.mvn/
+backend/.idea/
+backend/*.iml
+backend/.classpath
+backend/.project
+backend/.settings/
+
+# --- Node / Next ---
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+
+# --- OS / editor ---
+.DS_Store
+.vscode/
