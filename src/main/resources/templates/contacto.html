@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | Vigor</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<header class="container header">
+  <div class="logo">Vigor</div>
+  <nav class="nav">
+    <a href="/">Inicio</a>
+    <a href="/servicios">Servicios</a>
+    <a href="/tienda">Tienda</a>
+    <a href="/contacto">Contacto</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>Contacto</h1>
+  <p class="muted">Dejame tu mensaje o escribime directo por WhatsApp.</p>
+
+  <section class="grid">
+    <article class="card">
+      <h3>WhatsApp</h3>
+      <p class="muted">Botón con link directo (lo armamos bien ahora).</p>
+      <a class="btn btn--primary" href="https://wa.me/54911XXXXXXXXXX" target="_blank" rel="noreferrer">
+        Abrir WhatsApp
+      </a>
+    </article>
+
+    <article class="card">
+      <h3>Email</h3>
+      <p class="muted">vigor@gmail.com</p>
+    </article>
+
+    <article class="card">
+      <h3>Horario</h3>
+      <p class="muted">Lun a Vie · 9 a 18</p>
+    </article>
+  </section>
+</main>
+
+<footer class="container footer">
+  <p class="muted">© <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span> Vigor</p>
+</footer>
+</body>
+</html>

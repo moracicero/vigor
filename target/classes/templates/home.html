@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vigor</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+
+  <header class="container header">
+    <div class="logo">Vigor</div>
+
+    <nav class="nav">
+      <a href="/">Inicio</a>
+      <a href="/servicios">Servicios</a>
+      <a href="/tienda">Tienda</a>
+      <a href="/contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero__content">
+        <h1>Tu fuerza, tu estilo, tu proceso.</h1>
+        <p>
+          Entrenamiento + nutrición + acompañamiento. Un plan simple, elegante y pensado para vos.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="/tienda">Ver tienda</a>
+          <a class="btn btn--ghost" href="/contacto">Hablar por WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="hero__card">
+        <div class="hero__badge">Nuevo</div>
+        <h3>Planes Vigor</h3>
+        <p class="muted">Programas mensuales + seguimiento. Ideal para arrancar sin complicarte.</p>
+        <ul class="list">
+          <li>Rutina personalizada</li>
+          <li>Guía de alimentación</li>
+          <li>Soporte por WhatsApp</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h3>Entrenamiento</h3>
+        <p class="muted">Planes claros, progresivos y medibles.</p>
+      </article>
+
+      <article class="card">
+        <h3>Nutrición</h3>
+        <p class="muted">Guías fáciles de seguir, sin extremos.</p>
+      </article>
+
+      <article class="card">
+        <h3>Constancia</h3>
+        <p class="muted">Te acompaño para que lo sostengas.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p class="muted">© <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span> Vigor</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios | Vigor</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<header class="container header">
+  <div class="logo">Vigor</div>
+  <nav class="nav">
+    <a href="/">Inicio</a>
+    <a href="/servicios">Servicios</a>
+    <a href="/tienda">Tienda</a>
+    <a href="/contacto">Contacto</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>Servicios</h1>
+  <p class="muted">Elegí el plan que mejor se adapte a tu objetivo.</p>
+
+  <section class="grid">
+    <article class="card">
+      <h3>Plan Base</h3>
+      <p class="muted">Rutina + guía simple. Ideal para arrancar.</p>
+    </article>
+
+    <article class="card">
+      <h3>Plan Pro</h3>
+      <p class="muted">Rutina + nutrición + seguimiento semanal.</p>
+    </article>
+
+    <article class="card">
+      <h3>Plan Full</h3>
+      <p class="muted">Acompañamiento completo + ajustes continuos.</p>
+    </article>
+  </section>
+</main>
+
+<footer class="container footer">
+  <p class="muted">© <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span> Vigor</p>
+</footer>
+</body>
+</html>

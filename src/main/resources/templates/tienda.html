@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda | Vigor</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<header class="container header">
+  <div class="logo">Vigor</div>
+  <nav class="nav">
+    <a href="/">Inicio</a>
+    <a href="/servicios">Servicios</a>
+    <a href="/tienda">Tienda</a>
+    <a href="/contacto">Contacto</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>Tienda</h1>
+  <p class="muted">Acá vamos a listar productos/planes (después lo hacemos dinámico con la base).</p>
+
+  <section class="grid">
+    <article class="card">
+      <h3>Plan Mensual</h3>
+      <p class="muted">$XX.XXX</p>
+    </article>
+
+    <article class="card">
+      <h3>Plan Trimestral</h3>
+      <p class="muted">$XX.XXX</p>
+    </article>
+
+    <article class="card">
+      <h3>Guía Nutrición</h3>
+      <p class="muted">$XX.XXX</p>
+    </article>
+  </section>
+</main>
+
+<footer class="container footer">
+  <p class="muted">© <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span> Vigor</p>
+</footer>
+</body>
+</html>
