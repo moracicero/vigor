@@ -15,10 +15,6 @@ public class HomeController {
     public String servicios() {
         return "servicios"; 
     }
-    @GetMapping("/tienda")
-    public String tienda() {
-        return "tienda"; 
-    }
 
     @GetMapping("/contacto")
     public String contacto() {

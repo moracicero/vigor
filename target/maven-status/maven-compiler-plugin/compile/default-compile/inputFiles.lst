@@ -1,2 +1,6 @@
 /Users/moracicero/Desktop/vigor/vigor/src/main/java/com/vigor/vigor/VigorApplication.java
 /Users/moracicero/Desktop/vigor/vigor/src/main/java/com/vigor/vigor/controller/HomeController.java
+/Users/moracicero/Desktop/vigor/vigor/src/main/java/com/vigor/vigor/controller/TiendaController.java
+/Users/moracicero/Desktop/vigor/vigor/src/main/java/com/vigor/vigor/model/Plan.java
+/Users/moracicero/Desktop/vigor/vigor/src/main/java/com/vigor/vigor/repository/PlanRepository.java
+/Users/moracicero/Desktop/vigor/vigor/src/main/java/com/vigor/vigor/service/PlanService.java
