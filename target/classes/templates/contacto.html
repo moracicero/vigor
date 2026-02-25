@@ -7,6 +7,7 @@
   <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
+
 <header class="container header">
   <div class="logo">Vigor</div>
   <nav class="nav">
@@ -19,25 +20,70 @@
 
 <main class="container">
   <h1>Contacto</h1>
-  <p class="muted">Dejame tu mensaje o escribime directo por WhatsApp.</p>
+  <p class="muted">Completá el formulario y te respondemos. Si elegiste un plan en Tienda, ya te queda seleccionado.</p>
 
-  <section class="grid">
+  <div th:if="${param.ok}" class="card" style="margin:14px 0; border-color: rgba(255,255,255,0.18);">
+    <h3>Listo ✅</h3>
+    <p class="muted" style="margin-top:6px;">Tu mensaje fue enviado correctamente. Te vamos a responder por mail.</p>
+  </div>
+
+  <section class="grid" style="grid-template-columns: 1.3fr 0.7fr;">
+    <article class="card">
+      <form th:action="@{/contacto}" th:object="${solicitud}" method="post">
+        <div style="display:grid; gap:12px;">
+          <div>
+            <label class="muted" style="display:block; margin-bottom:6px;">Nombre</label>
+            <input th:field="*{nombre}" placeholder="Tu nombre"
+                   style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); color:#e8e8ea;">
+            <small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" style="color:#ffb4b4;"></small>
+          </div>
+
+          <div>
+            <label class="muted" style="display:block; margin-bottom:6px;">Email</label>
+            <input th:field="*{email}" placeholder="tuemail@gmail.com"
+                   style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); color:#e8e8ea;">
+            <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:#ffb4b4;"></small>
+          </div>
+
+          <div>
+            <label class="muted" style="display:block; margin-bottom:6px;">Plan</label>
+            <select th:field="*{planCodigo}"
+                    style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); color:#e8e8ea;">
+              <option th:each="p : ${planes}"
+                      th:value="${p.codigo}"
+                      th:text="${p.nombre}">
+              </option>
+            </select>
+            <small th:if="${#fields.hasErrors('planCodigo')}" th:errors="*{planCodigo}" style="color:#ffb4b4;"></small>
+          </div>
+
+          <div>
+            <label class="muted" style="display:block; margin-bottom:6px;">Mensaje</label>
+            <textarea th:field="*{mensaje}" rows="5" placeholder="Contanos tu objetivo, experiencia, etc."
+                      style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); color:#e8e8ea; resize:vertical;"></textarea>
+            <small th:if="${#fields.hasErrors('mensaje')}" th:errors="*{mensaje}" style="color:#ffb4b4;"></small>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Enviar</button>
+        </div>
+      </form>
+    </article>
+
     <article class="card">
       <h3>WhatsApp</h3>
-      <p class="muted">Botón con link directo (lo armamos bien ahora).</p>
-      <a class="btn btn--primary" href="https://wa.me/54911XXXXXXXXXX" target="_blank" rel="noreferrer">
-        Abrir WhatsApp
-      </a>
-    </article>
+      <p class="muted">Si preferís, escribinos directo.</p>
 
-    <article class="card">
-      <h3>Email</h3>
-      <p class="muted">vigor@gmail.com</p>
-    </article>
+     <a class="btn btn--ghost"
+   id="btnWhatsapp"
+   href="https://wa.me/18493562939"
+   target="_blank" rel="noreferrer">
+  Abrir WhatsApp
+</a>
 
-    <article class="card">
-      <h3>Horario</h3>
-      <p class="muted">Lun a Vie · 9 a 18</p>
+      <div style="margin-top:14px;">
+        <h3>Pagos</h3>
+        <p class="muted">Después conectamos Mercado Pago / PayPal con links o checkout.</p>
+      </div>
     </article>
   </section>
 </main>
@@ -45,5 +91,30 @@
 <footer class="container footer">
   <p class="muted">© <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span> Vigor</p>
 </footer>
+<script>
+  (function () {
+    const btn = document.getElementById("btnWhatsapp");
+    const planSelect = document.querySelector('select[name="planCodigo"]');
+    const emailInput = document.querySelector('input[name="email"]');
+
+    const phone = "18493562939"; 
+
+    function buildUrl() {
+      const plan = planSelect ? planSelect.value : "";
+      const text = `Hola! Quiero info del plan ${plan}`;
+      return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    }
+
+    function updateHref() {
+      if (!btn) return;
+      btn.href = buildUrl();
+    }
+
+    if (planSelect) planSelect.addEventListener("change", updateHref);
+    if (emailInput) emailInput.addEventListener("input", updateHref);
+
+    updateHref();
+  })();
+</script>
 </body>
 </html>

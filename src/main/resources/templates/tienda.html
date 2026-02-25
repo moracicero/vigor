@@ -51,7 +51,11 @@
       </ul>
 
       <div style="margin-top:14px;">
-        <a class="btn btn--primary" th:href="${p.ctaUrl}" th:text="${p.ctaTexto}">CTA</a>
+        <a class="btn btn--primary"
+   th:href="@{/contacto(plan=${p.codigo})}"
+   th:text="${p.ctaTexto}">
+  CTA
+</a>
       </div>
     </article>
   </section>
